@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// day 11 completed and learn about context, constraints, widget tree , element tree, and render tree
+// link for constraints: https://flutter.dev/docs/development/ui/layout/constraints
+
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -61,7 +64,7 @@ class MyDrawer extends StatelessWidget {
                 color: Colors.white,
               ),
               title: Text(
-                "E-Mail",
+                "Email",
                 textScaleFactor: 1.2,
                 style: TextStyle(
                   color: Colors.white,
