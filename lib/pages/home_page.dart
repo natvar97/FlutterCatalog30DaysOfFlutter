@@ -23,29 +23,37 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
+    await Future.delayed(Duration(seconds: 5));
     var catalogJson = await rootBundle.loadString("assets/files/catalog.json");
     var decodedData = jsonDecode(catalogJson);
     final productsData = decodedData["products"];
-    print(productsData);
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    // print(productsData);
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(50, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: Text("Catelog App"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: CatalogModel.items.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              item: dummyList[index],
-            );
-          },
-        ),
+        child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
+            ? ListView.builder(
+                itemCount: CatalogModel.items!.length,
+                itemBuilder: (context, index) {
+                  return ItemWidget(
+                    item: CatalogModel.items![index],
+                  );
+                },
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );
