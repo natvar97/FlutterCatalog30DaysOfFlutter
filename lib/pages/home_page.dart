@@ -45,11 +45,9 @@ class _HomePageState extends State<HomePage> {
         child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
             ? ListView.builder(
                 itemCount: CatalogModel.items!.length,
-                itemBuilder: (context, index) {
-                  return ItemWidget(
-                    item: CatalogModel.items![index],
-                  );
-                },
+                itemBuilder: (context, index) => ItemWidget(
+                  item: CatalogModel.items![index],
+                ),
               )
             : Center(
                 child: CircularProgressIndicator(),
