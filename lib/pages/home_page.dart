@@ -43,10 +43,56 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
-            ? ListView.builder(
+            ? GridView.builder(
                 itemCount: CatalogModel.items!.length,
-                itemBuilder: (context, index) => ItemWidget(
-                  item: CatalogModel.items![index],
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items![index];
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: GridTile(
+                      header: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          item.name,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Image.network(item.image),
+                      ),
+                      footer: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "\$${item.price}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 5.0,
+                  mainAxisSpacing: 5.0,
+                  childAspectRatio: 0.75,
                 ),
               )
             : Center(
