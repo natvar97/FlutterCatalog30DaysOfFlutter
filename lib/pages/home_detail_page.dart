@@ -26,12 +26,14 @@ class HomeDetailsPage extends StatelessWidget {
                   StadiumBorder(),
                 ),
               ),
-              child: "Buy".text.xl.make(),
-            ).wh(100, 50),
+              child: "Add to Cart".text.xl.make(),
+            ).wh(150, 50),
           ],
         ).p32(),
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
         bottom: false,
@@ -60,6 +62,15 @@ class HomeDetailsPage extends StatelessWidget {
                           .textStyle(context.captionStyle!)
                           .make(),
                       10.heightBox,
+                      Expanded(
+                        child:
+                            "Gubergren clita vero aliquyam sadipscing ipsum sit, est rebum et dolores duo et stet nonumy at. Diam clita dolor sanctus ut. Dolor amet consetetur tempor no aliquyam, tempor accusam magna est lorem. Accusam eirmod dolores justo diam gubergren vero no. Kasd elitr erat sadipscing ea sanctus amet elitr et voluptua.."
+                                .text
+                                .xl
+                                .textStyle(context.captionStyle!)
+                                .make()
+                                .px16(),
+                      )
                     ],
                   ).py64(),
                 ),
