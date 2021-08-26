@@ -2,16 +2,14 @@ import 'dart:convert';
 
 class CatalogModel {
   static List<Item>? items;
-  // = [
-  //   Item(
-  //       id: 1,
-  //       name: "iPhone 12 Pro",
-  //       desc: "Apple iPhone 12th generation",
-  //       price: 999,
-  //       color: "#33505a",
-  //       image:
-  //           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc"),
-  // ];
+
+  // get item by id
+  static Item? getById(int id) =>
+      items?.firstWhere((element) => element.id == id, orElse: null);
+
+  // get item by position
+  static Item? getByPosition(int position) => items?[position];
+
 }
 
 class Item {
@@ -30,8 +28,6 @@ class Item {
     required this.color,
     required this.image,
   });
-
-
 
   Item copyWith({
     int? id,
@@ -85,23 +81,23 @@ class Item {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is Item &&
-      other.id == id &&
-      other.name == name &&
-      other.desc == desc &&
-      other.price == price &&
-      other.color == color &&
-      other.image == image;
+        other.id == id &&
+        other.name == name &&
+        other.desc == desc &&
+        other.price == price &&
+        other.color == color &&
+        other.image == image;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      desc.hashCode ^
-      price.hashCode ^
-      color.hashCode ^
-      image.hashCode;
+        name.hashCode ^
+        desc.hashCode ^
+        price.hashCode ^
+        color.hashCode ^
+        image.hashCode;
   }
 }

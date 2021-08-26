@@ -10,16 +10,16 @@ class CatalogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items![index];
+        final catalog = CatalogModel.getByPosition(index);
         return InkWell(
-          child: CatalogItem(catalog: catalog),
+          child: CatalogItem(catalog: catalog!),
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => HomeDetailsPage(
                 catalog: catalog,
               ),
-            ),
+            )
           ),
         );
       },
